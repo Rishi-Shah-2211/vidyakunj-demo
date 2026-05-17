@@ -1,15 +1,6 @@
 import Link from "next/link";
 import { FACULTY } from "@/lib/data";
-import { PHOTOS } from "@/lib/photos";
-
-const FACULTY_PHOTOS = [
-  PHOTOS.lectureHall,
-  PHOTOS.scienceLab,
-  PHOTOS.chemistry,
-  PHOTOS.microscope,
-  PHOTOS.whiteboardMath,
-  PHOTOS.studyDesk,
-];
+import { PHOTOS, subjectPhoto } from "@/lib/photos";
 
 export default function FacultyPage() {
   const featured = FACULTY.find((f) => f.featured)!;
@@ -106,7 +97,7 @@ export default function FacultyPage() {
 
             <div
               className="skeuo-card-lifted skeuo-card-photo p-6 md:p-7 flex-1 relative overflow-hidden"
-              style={PHOTOS.bg(PHOTOS.studentsStudying)}
+              style={PHOTOS.bg(PHOTOS.studentPortrait7)}
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-3 mb-3">
                 A student remembers
@@ -153,7 +144,12 @@ export default function FacultyPage() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {rest.map((f, i) => (
-            <FacultyCard key={f.name} f={f} index={i + 2} photo={FACULTY_PHOTOS[i % FACULTY_PHOTOS.length]} />
+            <FacultyCard
+              key={f.name}
+              f={f}
+              index={i + 2}
+              photo={subjectPhoto(f.subject)}
+            />
           ))}
         </div>
       </section>

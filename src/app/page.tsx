@@ -75,7 +75,7 @@ export default function HomePage() {
 
           <div
             className="skeuo-card skeuo-card-photo col-span-12 md:col-span-4 p-6 md:p-7 relative overflow-hidden"
-            style={PHOTOS.bg(PHOTOS.teacherWriting)}
+            style={PHOTOS.bg(PHOTOS.teacherPortrait2)}
           >
             <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3 mb-3">Teachers you'll remember</div>
             <div className="font-display text-3xl text-ink leading-tight">24 educators,<br />12+ years avg.</div>
@@ -112,7 +112,10 @@ export default function HomePage() {
         </div>
         <div className="grid md:grid-cols-3 gap-3 md:gap-4">
           {WHY_PILLARS.map((p, i) => {
-            const photos = [PHOTOS.graduation, PHOTOS.professor, PHOTOS.celebrate];
+            // Pillar 1: legacy → library/campus
+            // Pillar 2: faculty → teacher portrait
+            // Pillar 3: results → student topper portrait
+            const photos = [PHOTOS.library, PHOTOS.teacherPortrait1, PHOTOS.studentPortrait6];
             return (
               <div
                 key={i}
@@ -136,7 +139,7 @@ export default function HomePage() {
             <figure
               key={i}
               className={`skeuo-card skeuo-card-photo p-8 md:p-10 ${i === 0 ? "md:translate-y-6" : ""}`}
-              style={PHOTOS.bg(i === 0 ? PHOTOS.studyDesk : PHOTOS.celebrate)}
+              style={PHOTOS.bg(i === 0 ? PHOTOS.studentPortrait2 : PHOTOS.studentPortrait5)}
             >
               <div className="text-5xl font-display leading-none grad-text">"</div>
               <blockquote className="mt-2 text-xl md:text-2xl text-ink leading-snug font-display italic">{t.quote}</blockquote>

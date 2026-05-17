@@ -1,15 +1,6 @@
 import Link from "next/link";
 import { TOPPERS, INSTITUTE } from "@/lib/data";
-import { PHOTOS } from "@/lib/photos";
-
-const TOPPER_PHOTOS = [
-  PHOTOS.graduation,
-  PHOTOS.celebrate,
-  PHOTOS.awardCeremony,
-  PHOTOS.studentsStudying,
-  PHOTOS.studyDesk,
-  PHOTOS.groupStudy,
-];
+import { PHOTOS, studentPortrait } from "@/lib/photos";
 
 export default function ResultsPage() {
   return (
@@ -29,9 +20,13 @@ export default function ResultsPage() {
 
       <section className="relative mx-auto max-w-7xl mb-12 md:mb-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          <BigStat label="Total selections" value="142" sub="Since 2018" photo={PHOTOS.graduation} />
-          <BigStat label="IIT seats" value="38" sub="JEE Advanced" highlight photo={PHOTOS.lectureHall} />
-          <BigStat label="NEET MBBS" value="74" sub="Govt + Private" photo={PHOTOS.scienceLab} />
+          {/* Total selections → graduation photo (legacy) */}
+          <BigStat label="Total selections" value="142" sub="Since 2018" photo={PHOTOS.graduates} />
+          {/* IIT seats → trophy/achievement */}
+          <BigStat label="IIT seats" value="38" sub="JEE Advanced" highlight photo={PHOTOS.trophy} />
+          {/* NEET MBBS → student portrait (a future doctor) */}
+          <BigStat label="NEET MBBS" value="74" sub="Govt + Private" photo={PHOTOS.studentPortrait4} />
+          {/* 100%ile → celebration */}
           <BigStat label="100%ile-ers" value="6" sub="JEE Main" photo={PHOTOS.celebrate} />
         </div>
       </section>
@@ -48,7 +43,8 @@ export default function ResultsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {TOPPERS.map((t, i) => (
-            <TopperCard key={t.name} t={t} index={i} photo={TOPPER_PHOTOS[i % TOPPER_PHOTOS.length]} />
+            // Each topper gets a unique student portrait — context-perfect
+            <TopperCard key={t.name} t={t} index={i} photo={studentPortrait(i)} />
           ))}
         </div>
       </section>
@@ -56,7 +52,7 @@ export default function ResultsPage() {
       <section className="relative mx-auto max-w-7xl mt-24 md:mt-32">
         <div
           className="skeuo-card-lifted skeuo-card-photo p-10 md:p-14 text-center relative overflow-hidden"
-          style={PHOTOS.bg(PHOTOS.celebrate)}
+          style={PHOTOS.bg(PHOTOS.graduation)}
         >
           <h2 className="font-display text-3xl md:text-5xl text-ink text-balance">
             Be the next name on this page.
