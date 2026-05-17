@@ -1,4 +1,5 @@
 import { INSTITUTE } from "@/lib/data";
+import { PHOTOS } from "@/lib/photos";
 
 export default function ContactPage() {
   return (
@@ -105,7 +106,8 @@ export default function ContactPage() {
           {/* Phone tile */}
           <a
             href={`tel:${INSTITUTE.phone.replace(/\s/g, "")}`}
-            className="skeuo-card col-span-6 md:col-span-4 p-6 md:p-7 group hover:scale-[1.01] transition"
+            className="skeuo-card skeuo-card-photo col-span-6 md:col-span-4 p-6 md:p-7 group"
+            style={PHOTOS.bg(PHOTOS.handshake)}
           >
             <div className="skeuo-icon-tile mb-4">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -121,7 +123,10 @@ export default function ContactPage() {
           </a>
 
           {/* Hours tile */}
-          <div className="skeuo-card col-span-6 md:col-span-4 p-6 md:p-7">
+          <div
+            className="skeuo-card skeuo-card-photo col-span-6 md:col-span-4 p-6 md:p-7"
+            style={PHOTOS.bg(PHOTOS.studyDesk)}
+          >
             <div className="skeuo-icon-tile mb-4">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
@@ -144,7 +149,8 @@ export default function ContactPage() {
             href={`https://wa.me/${INSTITUTE.phoneRaw}`}
             target="_blank"
             rel="noreferrer"
-            className="skeuo-card col-span-6 md:col-span-4 p-6 md:p-7"
+            className="skeuo-card skeuo-card-photo col-span-6 md:col-span-4 p-6 md:p-7"
+            style={PHOTOS.bg(PHOTOS.family)}
           >
             <div className="skeuo-icon-tile mb-4">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -163,7 +169,8 @@ export default function ContactPage() {
           {/* Email tile */}
           <a
             href={`mailto:${INSTITUTE.email}`}
-            className="skeuo-card col-span-6 md:col-span-4 p-6 md:p-7"
+            className="skeuo-card skeuo-card-photo col-span-6 md:col-span-4 p-6 md:p-7"
+            style={PHOTOS.bg(PHOTOS.notesAndBook)}
           >
             <div className="skeuo-icon-tile mb-4">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -180,10 +187,10 @@ export default function ContactPage() {
           </a>
 
           {/* Address — wide */}
-          <div className="skeuo-card-lifted col-span-12 md:col-span-8 p-6 md:p-7" style={{
-            backgroundImage:
-              "linear-gradient(135deg, rgba(4,120,87,0.04), rgba(2,132,199,0.04)), linear-gradient(180deg, #FFFFFFEF, #FBFAF6)",
-          }}>
+          <div
+            className="skeuo-card-lifted skeuo-card-photo col-span-12 md:col-span-8 p-6 md:p-7"
+            style={PHOTOS.bg(PHOTOS.campus)}
+          >
             <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-3 mb-3">
               Address
             </div>

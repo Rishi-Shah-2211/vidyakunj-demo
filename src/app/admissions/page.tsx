@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { INSTITUTE, COURSES } from "@/lib/data";
+import { PHOTOS } from "@/lib/photos";
 
 export default function AdmissionsPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -19,7 +20,7 @@ export default function AdmissionsPage() {
         <h1 className="font-display mt-5 text-5xl md:text-7xl leading-[0.95] text-ink text-balance">
           A short form.
           <br />
-          A <span className="grad-text">life-changing</span> two years.
+          A <span className="grad-text italic">life-changing</span> two years.
         </h1>
         <p className="mt-5 max-w-xl text-ink-2 text-base md:text-lg leading-relaxed">
           Tell us a little about the student. We'll call within 24 hours to set
@@ -29,8 +30,10 @@ export default function AdmissionsPage() {
 
       <section className="relative mx-auto max-w-7xl">
         <div className="grid grid-cols-12 gap-3 md:gap-4 items-start">
-          {/* FORM CARD */}
-          <div className="skeuo-card-lifted col-span-12 md:col-span-8 p-6 md:p-10">
+          <div
+            className="skeuo-card-lifted skeuo-card-photo col-span-12 md:col-span-8 p-6 md:p-10"
+            style={PHOTOS.bg(PHOTOS.studentWriting)}
+          >
             {submitted ? (
               <div className="text-center py-12">
                 <div
@@ -60,12 +63,7 @@ export default function AdmissionsPage() {
               <form onSubmit={onSubmit} className="space-y-5">
                 <div>
                   <Label num="01">Student's full name</Label>
-                  <input
-                    required
-                    type="text"
-                    placeholder="As on Aadhaar / school records"
-                    className="skeuo-input"
-                  />
+                  <input required type="text" placeholder="As on Aadhaar / school records" className="skeuo-input" />
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-5">
@@ -82,12 +80,7 @@ export default function AdmissionsPage() {
                   </div>
                   <div>
                     <Label num="03">School</Label>
-                    <input
-                      required
-                      type="text"
-                      placeholder="School name"
-                      className="skeuo-input"
-                    />
+                    <input required type="text" placeholder="School name" className="skeuo-input" />
                   </div>
                 </div>
 
@@ -147,21 +140,17 @@ export default function AdmissionsPage() {
             )}
           </div>
 
-          {/* SIDE INFO BENTO */}
           <div className="col-span-12 md:col-span-4 flex flex-col gap-3 md:gap-4">
             <div
-              className="skeuo-card-lifted p-6 md:p-7"
-              style={{
-                backgroundImage:
-                  "linear-gradient(135deg, rgba(4,120,87,0.05), rgba(2,132,199,0.05)), linear-gradient(180deg, #FFFFFFEF, #FBFAF6)",
-              }}
+              className="skeuo-card-lifted skeuo-card-photo p-6 md:p-7"
+              style={PHOTOS.bg(PHOTOS.handshake)}
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-3 mb-2">
                 Prefer to call?
               </div>
               <a
                 href={`tel:${INSTITUTE.phone.replace(/\s/g, "")}`}
-                className="font-display text-3xl md:text-4xl grad-text leading-tight block hover:opacity-80"
+                className="font-display text-3xl md:text-4xl grad-text italic leading-tight block hover:opacity-80"
               >
                 {INSTITUTE.phone}
               </a>
@@ -170,7 +159,7 @@ export default function AdmissionsPage() {
               </p>
             </div>
 
-            <div className="skeuo-card p-6 md:p-7">
+            <div className="skeuo-card skeuo-card-photo p-6 md:p-7" style={PHOTOS.bg(PHOTOS.family)}>
               <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-3 mb-3">
                 What happens next
               </div>
@@ -195,7 +184,7 @@ export default function AdmissionsPage() {
               </ol>
             </div>
 
-            <div className="skeuo-card p-6 md:p-7">
+            <div className="skeuo-card skeuo-card-photo p-6 md:p-7" style={PHOTOS.bg(PHOTOS.campus)}>
               <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-3 mb-3">
                 Visit us
               </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { INSTITUTE, WHY_PILLARS, TESTIMONIALS } from "@/lib/data";
+import { PHOTOS } from "@/lib/photos";
 
 export default function HomePage() {
   return (
@@ -7,9 +8,12 @@ export default function HomePage() {
       {/* ============ HERO BENTO ============ */}
       <section className="relative mx-auto max-w-7xl">
         <div className="grid grid-cols-12 gap-3 md:gap-4">
-          <div className="skeuo-card-lifted col-span-12 md:col-span-8 row-span-2 p-8 md:p-12 lg:p-16 relative overflow-hidden">
+          <div
+            className="skeuo-card-lifted skeuo-card-photo col-span-12 md:col-span-8 row-span-2 p-8 md:p-12 lg:p-16 relative overflow-hidden"
+            style={PHOTOS.bg(PHOTOS.classroomWide)}
+          >
             <div
-              className="absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full opacity-30"
+              className="absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full opacity-30 pointer-events-none"
               style={{ background: "var(--grad-soft)", filter: "blur(40px)" }}
             />
             <div className="relative">
@@ -23,7 +27,7 @@ export default function HomePage() {
               <h1 className="font-display mt-7 md:mt-10 text-5xl md:text-7xl lg:text-8xl leading-[0.95] text-balance text-ink">
                 Where Anand
                 <br />
-                <span className="grad-text">learns.</span> For a
+                <span className="grad-text italic">learns.</span> For a
                 <br />
                 generation, and counting.
               </h1>
@@ -46,10 +50,13 @@ export default function HomePage() {
             </div>
           </div>
 
-          <StatTile big="23+" small="years of teaching" sub="Since 2002" colSpan="col-span-6 md:col-span-4" />
-          <StatTile big="8,400" small="students mentored" sub="From class 9 to JEE" highlight colSpan="col-span-6 md:col-span-4" />
+          <StatTile big="23+" small="years of teaching" sub="Since 2002" colSpan="col-span-6 md:col-span-4" photo={PHOTOS.library} />
+          <StatTile big="8,400" small="students mentored" sub="From class 9 to JEE" highlight colSpan="col-span-6 md:col-span-4" photo={PHOTOS.studentsStudying} />
 
-          <div className="skeuo-card col-span-12 md:col-span-4 p-6 md:p-7">
+          <div
+            className="skeuo-card skeuo-card-photo col-span-12 md:col-span-4 p-6 md:p-7"
+            style={PHOTOS.bg(PHOTOS.notesAndBook)}
+          >
             <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3 mb-3">We coach for</div>
             <div className="space-y-2.5">
               {[
@@ -66,7 +73,10 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="skeuo-card col-span-12 md:col-span-4 p-6 md:p-7 relative overflow-hidden">
+          <div
+            className="skeuo-card skeuo-card-photo col-span-12 md:col-span-4 p-6 md:p-7 relative overflow-hidden"
+            style={PHOTOS.bg(PHOTOS.teacherWriting)}
+          >
             <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3 mb-3">Teachers you'll remember</div>
             <div className="font-display text-3xl text-ink leading-tight">24 educators,<br />12+ years avg.</div>
             <p className="mt-3 text-sm text-ink-3 leading-relaxed">
@@ -77,9 +87,12 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="skeuo-card col-span-12 md:col-span-4 p-6 md:p-7">
+          <div
+            className="skeuo-card skeuo-card-photo col-span-12 md:col-span-4 p-6 md:p-7"
+            style={PHOTOS.bg(PHOTOS.campus)}
+          >
             <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3 mb-3">Find us</div>
-            <div className="font-display text-2xl text-ink leading-tight">Near Elecon<br />Garden,<br /><span className="grad-text">Anand</span></div>
+            <div className="font-display text-2xl text-ink leading-tight">Near Elecon<br />Garden,<br /><span className="grad-text italic">Anand</span></div>
             <Link href="/contact" className="mt-5 inline-flex items-center gap-1 text-sm text-ink border-b border-ink/30 pb-0.5 hover:border-ink">
               Get directions →
             </Link>
@@ -93,19 +106,26 @@ export default function HomePage() {
           <div>
             <span className="skeuo-pill">02 · Why us</span>
             <h2 className="font-display mt-5 text-4xl md:text-6xl text-ink text-balance">
-              Three reasons parents<br />trust <span className="grad-text">Vidyakunj.</span>
+              Three reasons parents<br />trust <span className="grad-text italic">Vidyakunj.</span>
             </h2>
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-3 md:gap-4">
-          {WHY_PILLARS.map((p, i) => (
-            <div key={i} className="skeuo-card p-7 md:p-8 relative overflow-hidden">
-              <div className="text-5xl mb-5 select-none">{p.icon}</div>
-              <h3 className="font-display text-2xl text-ink leading-tight">{p.title}</h3>
-              <p className="mt-3 text-ink-2 leading-relaxed">{p.description}</p>
-              <span className="absolute top-5 right-5 font-mono text-[10px] uppercase tracking-[0.25em] text-ink-4">0{i + 1}</span>
-            </div>
-          ))}
+          {WHY_PILLARS.map((p, i) => {
+            const photos = [PHOTOS.graduation, PHOTOS.professor, PHOTOS.celebrate];
+            return (
+              <div
+                key={i}
+                className="skeuo-card skeuo-card-photo p-7 md:p-8 relative overflow-hidden"
+                style={PHOTOS.bg(photos[i] || PHOTOS.studentsStudying)}
+              >
+                <div className="text-5xl mb-5 select-none">{p.icon}</div>
+                <h3 className="font-display text-2xl text-ink leading-tight">{p.title}</h3>
+                <p className="mt-3 text-ink-2 leading-relaxed">{p.description}</p>
+                <span className="absolute top-5 right-5 font-mono text-[10px] uppercase tracking-[0.25em] text-ink-4">0{i + 1}</span>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -113,9 +133,13 @@ export default function HomePage() {
       <section className="relative mx-auto max-w-7xl mt-24 md:mt-32">
         <div className="grid md:grid-cols-2 gap-3 md:gap-4">
           {TESTIMONIALS.map((t, i) => (
-            <figure key={i} className={`skeuo-card p-8 md:p-10 ${i === 0 ? "md:translate-y-6" : ""}`}>
+            <figure
+              key={i}
+              className={`skeuo-card skeuo-card-photo p-8 md:p-10 ${i === 0 ? "md:translate-y-6" : ""}`}
+              style={PHOTOS.bg(i === 0 ? PHOTOS.studyDesk : PHOTOS.celebrate)}
+            >
               <div className="text-5xl font-display leading-none grad-text">"</div>
-              <blockquote className="mt-2 text-xl md:text-2xl text-ink leading-snug font-display">{t.quote}</blockquote>
+              <blockquote className="mt-2 text-xl md:text-2xl text-ink leading-snug font-display italic">{t.quote}</blockquote>
               <figcaption className="mt-6 flex items-center gap-3">
                 <span className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-medium" style={{ background: "var(--grad-1)" }}>
                   {t.author.split(" ").map((s) => s[0]).join("")}
@@ -133,15 +157,12 @@ export default function HomePage() {
       {/* ============ CTA STRIP ============ */}
       <section className="relative mx-auto max-w-7xl mt-24 md:mt-32">
         <div
-          className="skeuo-card-lifted p-10 md:p-16 relative overflow-hidden text-center"
-          style={{
-            backgroundImage:
-              "linear-gradient(135deg, rgba(4,120,87,0.05) 0%, rgba(2,132,199,0.05) 100%), linear-gradient(180deg, #FBFAF6 0%, #F4F1EA 100%)",
-          }}
+          className="skeuo-card-lifted skeuo-card-photo p-10 md:p-16 relative overflow-hidden text-center"
+          style={PHOTOS.bg(PHOTOS.graduation)}
         >
           <span className="skeuo-pill">Admissions open · 2026 batch</span>
           <h2 className="font-display mt-6 text-4xl md:text-6xl text-ink text-balance">
-            Your child's next two years can<br />change <span className="grad-text">everything.</span>
+            Your child's next two years can<br />change <span className="grad-text italic">everything.</span>
           </h2>
           <p className="mt-4 max-w-xl mx-auto text-ink-2">
             Book a free counseling visit. Meet the faculty. See the classroom. Decide for yourself.
@@ -159,16 +180,14 @@ export default function HomePage() {
 }
 
 function StatTile({
-  big, small, sub, highlight, colSpan,
+  big, small, sub, highlight, colSpan, photo,
 }: {
-  big: string; small: string; sub: string; highlight?: boolean; colSpan: string;
+  big: string; small: string; sub: string; highlight?: boolean; colSpan: string; photo: string;
 }) {
   return (
     <div
-      className={`${highlight ? "skeuo-card-lifted" : "skeuo-card"} ${colSpan} p-6 md:p-7 relative overflow-hidden`}
-      style={highlight ? {
-        backgroundImage: "linear-gradient(135deg, rgba(4,120,87,0.04), rgba(2,132,199,0.04)), linear-gradient(180deg, #FFFFFFEF, #FBFAF6)",
-      } : undefined}
+      className={`${highlight ? "skeuo-card-lifted" : "skeuo-card"} skeuo-card-photo ${colSpan} p-6 md:p-7 relative overflow-hidden`}
+      style={PHOTOS.bg(photo)}
     >
       <div className={`font-display text-5xl md:text-6xl leading-none ${highlight ? "grad-text" : "text-ink"}`}>{big}</div>
       <div className="mt-3 text-ink-2 font-medium">{small}</div>

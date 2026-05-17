@@ -1,5 +1,15 @@
 import Link from "next/link";
 import { FACULTY } from "@/lib/data";
+import { PHOTOS } from "@/lib/photos";
+
+const FACULTY_PHOTOS = [
+  PHOTOS.lectureHall,
+  PHOTOS.scienceLab,
+  PHOTOS.chemistry,
+  PHOTOS.microscope,
+  PHOTOS.whiteboardMath,
+  PHOTOS.studyDesk,
+];
 
 export default function FacultyPage() {
   const featured = FACULTY.find((f) => f.featured)!;
@@ -7,13 +17,12 @@ export default function FacultyPage() {
 
   return (
     <main className="relative px-3 md:px-6 pt-24 md:pt-28 pb-12">
-      {/* ========== HEADER ========== */}
       <section className="relative mx-auto max-w-7xl mb-8 md:mb-12 px-2">
         <span className="skeuo-pill">03 · Faculty</span>
         <h1 className="font-display mt-5 text-5xl md:text-7xl leading-[0.95] text-ink text-balance">
           The people behind
           <br />
-          every <span className="grad-text">result.</span>
+          every <span className="grad-text italic">result.</span>
         </h1>
         <p className="mt-5 max-w-xl text-ink-2 text-base md:text-lg leading-relaxed">
           Twenty-four full-time educators. Average tenure of twelve years.
@@ -22,18 +31,13 @@ export default function FacultyPage() {
         </p>
       </section>
 
-      {/* ========== FEATURED — DHIRAJ SIR ========== */}
       <section className="relative mx-auto max-w-7xl mb-12 md:mb-16">
         <div className="grid grid-cols-12 gap-3 md:gap-4 items-stretch">
-          {/* Circular hero card */}
           <div
-            className="skeuo-card-lifted col-span-12 md:col-span-7 p-8 md:p-12 relative overflow-hidden"
-            style={{
-              backgroundImage:
-                "radial-gradient(120% 90% at 0% 0%, rgba(4,120,87,0.05) 0%, transparent 60%), radial-gradient(120% 90% at 100% 100%, rgba(2,132,199,0.05) 0%, transparent 60%), linear-gradient(180deg, #FFFFFFEF, #FBFAF6)",
-            }}
+            className="skeuo-card-lifted skeuo-card-photo col-span-12 md:col-span-7 p-8 md:p-12 relative overflow-hidden"
+            style={PHOTOS.bg(PHOTOS.whiteboardMath)}
           >
-            <div className="flex items-start justify-between mb-8">
+            <div className="flex items-start justify-between mb-8 relative z-10">
               <span className="skeuo-pill">
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--grad-1)" }} />
                 Featured faculty
@@ -43,8 +47,7 @@ export default function FacultyPage() {
               </span>
             </div>
 
-            {/* The circular portrait — initials disc with depth */}
-            <div className="flex flex-col items-center text-center">
+            <div className="relative z-10 flex flex-col items-center text-center">
               <div className="relative">
                 <div
                   className="w-44 h-44 md:w-56 md:h-56 rounded-full flex items-center justify-center"
@@ -68,11 +71,8 @@ export default function FacultyPage() {
                     </span>
                   </div>
                 </div>
-                {/* Floating year badge */}
-                <div
-                  className="absolute -bottom-2 -right-2 skeuo-card-lifted px-4 py-2 flex items-center gap-2"
-                >
-                  <span className="font-display text-2xl grad-text">{featured.years}</span>
+                <div className="absolute -bottom-2 -right-2 skeuo-card-lifted px-4 py-2 flex items-center gap-2">
+                  <span className="font-display text-2xl grad-text italic">{featured.years}</span>
                   <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-ink-3 leading-tight">
                     years<br />in the chair
                   </span>
@@ -91,9 +91,11 @@ export default function FacultyPage() {
             </div>
           </div>
 
-          {/* Side stack — achievement + subject + quote */}
           <div className="col-span-12 md:col-span-5 flex flex-col gap-3 md:gap-4">
-            <div className="skeuo-card p-6 md:p-7 flex-1">
+            <div
+              className="skeuo-card skeuo-card-photo p-6 md:p-7 flex-1"
+              style={PHOTOS.bg(PHOTOS.notesAndBook)}
+            >
               <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-3 mb-3">
                 Known for
               </div>
@@ -103,15 +105,13 @@ export default function FacultyPage() {
             </div>
 
             <div
-              className="skeuo-card-lifted p-6 md:p-7 flex-1 relative overflow-hidden"
-              style={{
-                backgroundImage: "linear-gradient(135deg, rgba(4,120,87,0.04) 0%, rgba(2,132,199,0.04) 100%), linear-gradient(180deg, #FFFFFFEF, #FBFAF6)",
-              }}
+              className="skeuo-card-lifted skeuo-card-photo p-6 md:p-7 flex-1 relative overflow-hidden"
+              style={PHOTOS.bg(PHOTOS.studentsStudying)}
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-3 mb-3">
                 A student remembers
               </div>
-              <blockquote className="font-display text-lg md:text-xl text-ink leading-snug">
+              <blockquote className="font-display text-lg md:text-xl text-ink leading-snug italic">
                 "Calculus made sense for the first time in Dhiraj Sir's class.
                 I still hear him explaining limits whenever I solve one."
               </blockquote>
@@ -141,7 +141,6 @@ export default function FacultyPage() {
         </div>
       </section>
 
-      {/* ========== REST OF FACULTY ========== */}
       <section className="relative mx-auto max-w-7xl">
         <div className="flex items-end justify-between mb-8 px-2">
           <h3 className="font-display text-3xl md:text-4xl text-ink">
@@ -154,7 +153,7 @@ export default function FacultyPage() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {rest.map((f, i) => (
-            <FacultyCard key={f.name} f={f} index={i + 2} />
+            <FacultyCard key={f.name} f={f} index={i + 2} photo={FACULTY_PHOTOS[i % FACULTY_PHOTOS.length]} />
           ))}
         </div>
       </section>
@@ -162,9 +161,17 @@ export default function FacultyPage() {
   );
 }
 
-function FacultyCard({ f, index }: { f: (typeof FACULTY)[number]; index: number }) {
+function FacultyCard({
+  f,
+  index,
+  photo,
+}: {
+  f: (typeof FACULTY)[number];
+  index: number;
+  photo: string;
+}) {
   return (
-    <article className="skeuo-card p-6 md:p-7 relative">
+    <article className="skeuo-card skeuo-card-photo p-6 md:p-7 relative" style={PHOTOS.bg(photo)}>
       <div className="flex items-start justify-between mb-5">
         <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-4">
           {String(index).padStart(2, "0")}

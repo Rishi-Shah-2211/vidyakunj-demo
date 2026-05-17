@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Instrument_Serif, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import { Nav } from "@/components/shared/Nav";
 import { Footer } from "@/components/shared/Footer";
 import { INSTITUTE } from "@/lib/data";
 
-const inter = Inter({
-  variable: "--font-inter",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const instrument = Instrument_Serif({
+  variable: "--font-instrument",
   subsets: ["latin"],
-  axes: ["SOFT", "opsz"],
+  weight: ["400"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -37,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} ${jetbrains.variable}`}
+      className={`${geist.variable} ${instrument.variable} ${jetbrains.variable}`}
       suppressHydrationWarning
     >
       <body>
