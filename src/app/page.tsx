@@ -1,65 +1,178 @@
-import Image from "next/image";
+import Link from "next/link";
+import { INSTITUTE, WHY_PILLARS, TESTIMONIALS } from "@/lib/data";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <main className="relative px-3 md:px-6 pt-24 md:pt-28 pb-12">
+      {/* ============ HERO BENTO ============ */}
+      <section className="relative mx-auto max-w-7xl">
+        <div className="grid grid-cols-12 gap-3 md:gap-4">
+          <div className="skeuo-card-lifted col-span-12 md:col-span-8 row-span-2 p-8 md:p-12 lg:p-16 relative overflow-hidden">
+            <div
+              className="absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full opacity-30"
+              style={{ background: "var(--grad-soft)", filter: "blur(40px)" }}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="relative">
+              <span className="skeuo-pill">
+                <span
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ background: "var(--grad-1)" }}
+                />
+                Anand · Since {INSTITUTE.founded}
+              </span>
+              <h1 className="font-display mt-7 md:mt-10 text-5xl md:text-7xl lg:text-8xl leading-[0.95] text-balance text-ink">
+                Where Anand
+                <br />
+                <span className="grad-text">learns.</span> For a
+                <br />
+                generation, and counting.
+              </h1>
+              <p className="mt-6 md:mt-8 max-w-xl text-base md:text-lg text-ink-2 leading-relaxed">
+                A coaching institute, yes — but really, a quiet corner of Anand
+                where serious students show up, do the work, and walk out into
+                IITs, NITs and medical colleges across the country.
+              </p>
+              <div className="mt-8 md:mt-10 flex flex-wrap gap-3">
+                <Link href="/admissions" className="skeuo-button">
+                  Apply for admission
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+                <Link href="/courses" className="skeuo-button-ghost">
+                  Explore courses
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <StatTile big="23+" small="years of teaching" sub="Since 2002" colSpan="col-span-6 md:col-span-4" />
+          <StatTile big="8,400" small="students mentored" sub="From class 9 to JEE" highlight colSpan="col-span-6 md:col-span-4" />
+
+          <div className="skeuo-card col-span-12 md:col-span-4 p-6 md:p-7">
+            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3 mb-3">We coach for</div>
+            <div className="space-y-2.5">
+              {[
+                { tag: "JEE", note: "Engineering" },
+                { tag: "NEET", note: "Medical" },
+                { tag: "Boards", note: "GSEB · CBSE" },
+                { tag: "Foundation", note: "Class 9 · 10" },
+              ].map((c) => (
+                <div key={c.tag} className="flex items-center justify-between">
+                  <span className="font-display text-2xl text-ink">{c.tag}</span>
+                  <span className="text-sm text-ink-3">{c.note}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="skeuo-card col-span-12 md:col-span-4 p-6 md:p-7 relative overflow-hidden">
+            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3 mb-3">Teachers you'll remember</div>
+            <div className="font-display text-3xl text-ink leading-tight">24 educators,<br />12+ years avg.</div>
+            <p className="mt-3 text-sm text-ink-3 leading-relaxed">
+              Many of our faculty taught at schools you went to. Some, your parents went to.
+            </p>
+            <Link href="/faculty" className="mt-5 inline-flex items-center gap-1 text-sm text-ink border-b border-ink/30 pb-0.5 hover:border-ink">
+              Meet the faculty →
+            </Link>
+          </div>
+
+          <div className="skeuo-card col-span-12 md:col-span-4 p-6 md:p-7">
+            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3 mb-3">Find us</div>
+            <div className="font-display text-2xl text-ink leading-tight">Near Elecon<br />Garden,<br /><span className="grad-text">Anand</span></div>
+            <Link href="/contact" className="mt-5 inline-flex items-center gap-1 text-sm text-ink border-b border-ink/30 pb-0.5 hover:border-ink">
+              Get directions →
+            </Link>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* ============ WHY PILLARS ============ */}
+      <section className="relative mx-auto max-w-7xl mt-24 md:mt-32">
+        <div className="flex items-end justify-between mb-10 md:mb-14 px-2">
+          <div>
+            <span className="skeuo-pill">02 · Why us</span>
+            <h2 className="font-display mt-5 text-4xl md:text-6xl text-ink text-balance">
+              Three reasons parents<br />trust <span className="grad-text">Vidyakunj.</span>
+            </h2>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-3 gap-3 md:gap-4">
+          {WHY_PILLARS.map((p, i) => (
+            <div key={i} className="skeuo-card p-7 md:p-8 relative overflow-hidden">
+              <div className="text-5xl mb-5 select-none">{p.icon}</div>
+              <h3 className="font-display text-2xl text-ink leading-tight">{p.title}</h3>
+              <p className="mt-3 text-ink-2 leading-relaxed">{p.description}</p>
+              <span className="absolute top-5 right-5 font-mono text-[10px] uppercase tracking-[0.25em] text-ink-4">0{i + 1}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ============ TESTIMONIAL ============ */}
+      <section className="relative mx-auto max-w-7xl mt-24 md:mt-32">
+        <div className="grid md:grid-cols-2 gap-3 md:gap-4">
+          {TESTIMONIALS.map((t, i) => (
+            <figure key={i} className={`skeuo-card p-8 md:p-10 ${i === 0 ? "md:translate-y-6" : ""}`}>
+              <div className="text-5xl font-display leading-none grad-text">"</div>
+              <blockquote className="mt-2 text-xl md:text-2xl text-ink leading-snug font-display">{t.quote}</blockquote>
+              <figcaption className="mt-6 flex items-center gap-3">
+                <span className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-medium" style={{ background: "var(--grad-1)" }}>
+                  {t.author.split(" ").map((s) => s[0]).join("")}
+                </span>
+                <div>
+                  <div className="font-medium text-ink">{t.author}</div>
+                  <div className="text-xs text-ink-3">{t.detail}</div>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      {/* ============ CTA STRIP ============ */}
+      <section className="relative mx-auto max-w-7xl mt-24 md:mt-32">
+        <div
+          className="skeuo-card-lifted p-10 md:p-16 relative overflow-hidden text-center"
+          style={{
+            backgroundImage:
+              "linear-gradient(135deg, rgba(4,120,87,0.05) 0%, rgba(2,132,199,0.05) 100%), linear-gradient(180deg, #FBFAF6 0%, #F4F1EA 100%)",
+          }}
+        >
+          <span className="skeuo-pill">Admissions open · 2026 batch</span>
+          <h2 className="font-display mt-6 text-4xl md:text-6xl text-ink text-balance">
+            Your child's next two years can<br />change <span className="grad-text">everything.</span>
+          </h2>
+          <p className="mt-4 max-w-xl mx-auto text-ink-2">
+            Book a free counseling visit. Meet the faculty. See the classroom. Decide for yourself.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link href="/admissions" className="skeuo-button">Book a visit</Link>
+            <a href={`tel:${INSTITUTE.phone.replace(/\s/g, "")}`} className="skeuo-button-ghost">
+              Call {INSTITUTE.phone}
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function StatTile({
+  big, small, sub, highlight, colSpan,
+}: {
+  big: string; small: string; sub: string; highlight?: boolean; colSpan: string;
+}) {
+  return (
+    <div
+      className={`${highlight ? "skeuo-card-lifted" : "skeuo-card"} ${colSpan} p-6 md:p-7 relative overflow-hidden`}
+      style={highlight ? {
+        backgroundImage: "linear-gradient(135deg, rgba(4,120,87,0.04), rgba(2,132,199,0.04)), linear-gradient(180deg, #FFFFFFEF, #FBFAF6)",
+      } : undefined}
+    >
+      <div className={`font-display text-5xl md:text-6xl leading-none ${highlight ? "grad-text" : "text-ink"}`}>{big}</div>
+      <div className="mt-3 text-ink-2 font-medium">{small}</div>
+      <div className="text-xs text-ink-3 mt-1">{sub}</div>
     </div>
   );
 }
