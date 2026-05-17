@@ -51,7 +51,7 @@ export default function ResultsPage() {
 
       <section className="relative mx-auto max-w-7xl mt-24 md:mt-32">
         <div
-          className="skeuo-card-lifted skeuo-card-photo p-10 md:p-14 text-center relative overflow-hidden"
+          className="skeuo-card-lifted skeuo-card-photo photo-dim p-10 md:p-14 text-center relative overflow-hidden"
           style={PHOTOS.bg(PHOTOS.graduation)}
         >
           <h2 className="font-display text-3xl md:text-5xl text-ink text-balance">

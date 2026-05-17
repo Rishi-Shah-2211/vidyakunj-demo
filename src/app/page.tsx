@@ -9,7 +9,7 @@ export default function HomePage() {
       <section className="relative mx-auto max-w-7xl">
         <div className="grid grid-cols-12 gap-3 md:gap-4">
           <div
-            className="skeuo-card-lifted skeuo-card-photo col-span-12 md:col-span-8 row-span-2 p-8 md:p-12 lg:p-16 relative overflow-hidden"
+            className="skeuo-card-lifted skeuo-card-photo photo-dim col-span-12 md:col-span-8 row-span-2 p-8 md:p-12 lg:p-16 relative overflow-hidden"
             style={PHOTOS.bg(PHOTOS.classroomWide)}
           >
             <div
@@ -160,7 +160,7 @@ export default function HomePage() {
       {/* ============ CTA STRIP ============ */}
       <section className="relative mx-auto max-w-7xl mt-24 md:mt-32">
         <div
-          className="skeuo-card-lifted skeuo-card-photo p-10 md:p-16 relative overflow-hidden text-center"
+          className="skeuo-card-lifted skeuo-card-photo photo-dim p-10 md:p-16 relative overflow-hidden text-center"
           style={PHOTOS.bg(PHOTOS.graduation)}
         >
           <span className="skeuo-pill">Admissions open · 2026 batch</span>

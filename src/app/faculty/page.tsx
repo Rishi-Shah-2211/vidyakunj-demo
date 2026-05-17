@@ -25,7 +25,7 @@ export default function FacultyPage() {
       <section className="relative mx-auto max-w-7xl mb-12 md:mb-16">
         <div className="grid grid-cols-12 gap-3 md:gap-4 items-stretch">
           <div
-            className="skeuo-card-lifted skeuo-card-photo col-span-12 md:col-span-7 p-8 md:p-12 relative overflow-hidden"
+            className="skeuo-card-lifted skeuo-card-photo photo-dim col-span-12 md:col-span-7 p-8 md:p-12 relative overflow-hidden"
             style={PHOTOS.bg(PHOTOS.whiteboardMath)}
           >
             <div className="flex items-start justify-between mb-8 relative z-10">
